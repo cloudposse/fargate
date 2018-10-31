@@ -1,3 +1,5 @@
+-include $(shell curl -sSL -o .build-harness "https://git.io/build-harness"; echo .build-harness)
+
 .PHONY: mocks test build dist
 
 PACKAGES := $(shell go list ./... | grep -v /mock)
@@ -26,3 +28,6 @@ dist:
 	find dist/build -name *.zip -exec mv {} dist \;
 
 	rm -rf dist/build
+
+go/build/local:
+	CGO_ENABLED=0 go build -v -o "./dist/build/fargate" .

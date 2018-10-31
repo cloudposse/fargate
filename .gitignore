@@ -3,3 +3,7 @@ bin
 fargate
 dist
 vendor
+*.iml
+.idea
+.build-harness
+build-harness
